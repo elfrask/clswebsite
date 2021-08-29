@@ -1,0 +1,105 @@
+@font-face {
+  font-family: "jet";
+  src: url("/font/jet.TTF");
+}
+@font-face {
+  font-family: "imp";
+  src: url("/font/imp.woff2");
+}
+* {
+  padding: 0%;
+  margin: 0%;
+  font-family: "jet";
+  font-size: 15px;
+}
+
+.flex {
+  display: flex;
+}
+
+.c-v {
+  align-items: center;
+}
+
+.c-h {
+  justify-content: center;
+}
+
+.medio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spacing {
+  justify-content: space-around;
+}
+
+.suelo, .head {
+  width: calc(100% - 40px);
+  height: max-content;
+  padding: 20px;
+  background-color: #444;
+  color: #ccc;
+}
+
+.imgb {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.dilink {
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px white;
+  background-color: white;
+  cursor: pointer;
+}
+
+.bt {
+  cursor: pointer;
+  font-family: jet;
+  font-size: 18px;
+}
+
+.up_bt {
+  display: flex;
+}
+.up_bt .bt {
+  color: darkgray;
+  float: right;
+  margin: 20px;
+}
+
+.head {
+  justify-content: space-between;
+}
+
+.land {
+  display: none;
+}
+
+.port {
+  display: none;
+}
+
+@media (orientation: portrait) {
+  .port {
+    display: block;
+  }
+
+  .aco {
+    flex-direction: row;
+  }
+}
+@media (orientation: landscape) {
+  .land {
+    display: block;
+  }
+
+  .aco {
+    flex-direction: column;
+  }
+}
+
+/*# sourceMappingURL=base.css.map */
