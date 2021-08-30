@@ -23,22 +23,29 @@ class Cabeza extends React.Component {
     render() {
         return (
             <div className="head flex c-v">
-                <Img img="/img/logo.png" size="75" link="/"/>
+                <Img img="/img/logo.png" size="75" link="/" style={{cursor:"pointer"}}/>
                 <div
-
                     className="land up_bt"
-
-                style={{
-                    float:"right",
-                    width:"max-content",
-                    height:"max-content",
-                }}
+                    style={{
+                        float:"right",
+                        width:"max-content",
+                        height:"max-content",
+                    }}
                 >
-
                     <Bt link="/doc">Documentacion</Bt>
                     <Bt link="https://github.com/elfrask/cls">Github</Bt>
                     <Bt link="/dowloads">Descarga</Bt>
-
+                    <Bt link="/cpkg">CPKG</Bt>
+                </div>
+                <div
+                    className="port up_bt"
+                    style={{
+                        float:"right",
+                        width:"max-content",
+                        height:"max-content",
+                    }}
+                >
+                    <Bt link="#pie">Opciones</Bt>
                 </div>
             </div>
         )
@@ -73,10 +80,25 @@ class Suelo extends React.Component {
     render() {
         return (
             <div className="suelo aco medio">
-                <div>
-                    <Img img="/img/icon/github.png" className="dilink" size="50" link="https://github.com/elfrask/cls" />
+                <section id="pie"></section>
+                <div className="medio sparcing" style={{
+                        width: "100%",
+                        justifyContent: "space-around",
+                        maxWidth:"500px",
+                        minWidth:"315px"
+                    }}>
+                    <Img img="/img/icon/dowload.png" className="dilink" size="60" link="/dowloads" />
+                    <Img img="/img/icon/doc.png" className="dilink" size="60" link="/doc" />
+                    <Img img="/img/icon/pkg.png" className="dilink" size="60" link="/cpkg" style={{backgroundSize:"75%"}} />
+                    <Img img="/img/icon/github.png" className="dilink" size="60" link="https://github.com/elfrask/cls" />
                 </div>
-                <div></div>
+                <div style={{margin:"50px", fontSize:"20px"}}>
+                    Creador: <a href="/frask" style={{fontSize:"20px", color:"gold"}}>Frask</a> <br /> 
+                   
+                </div>
+                <div>
+                    CLS Project (2021)
+                </div>
             </div>
         )
     }
@@ -88,6 +110,14 @@ class Body extends React.Component {
             <div className="page">
                 {this.props.children}
             </div>
+        )
+    }
+}
+
+class Clscode extends React.Component {
+    render() {
+        return (
+            <div dangerouslySetInnerHTML={{__html: toConvert(this.props.code)}} />
         )
     }
 }

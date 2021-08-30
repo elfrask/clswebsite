@@ -10,13 +10,16 @@ $font-color: #444;
     src: url("/font/imp.woff2");
 }
 
-
+.page {
+    background-color: #666;
+}
 
 * {
     padding: 0%;
     margin: 0%;
     font-family: "jet";
     font-size: 15px;
+    color: #ccc;
 }
 
 .flex {
@@ -52,8 +55,12 @@ $font-color: #444;
 .dilink {
     border-radius: 50%;
     box-shadow: 0px 0px 10px white;
-    background-color: white;
+    background-color: #333;
     cursor: pointer;
+    transition: 0.4s;
+}
+.dilink:hover {
+    transform: scale(1.2);
 }
 
 .bt{
@@ -85,11 +92,11 @@ $font-color: #444;
 .port {display: none;}
 @media (orientation:portrait) {
     .port {display: block;}
-    .aco {flex-direction: row;}
+    .aco {flex-direction: column;}
     
 }
 @media (orientation:landscape) {
     .land {display: block;}
-    .aco {flex-direction: column;}
+    .aco {flex-direction: row;}
     
 }
