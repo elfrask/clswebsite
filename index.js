@@ -26,6 +26,13 @@ app.get("/", (req, res, next) => {
     )
 });
 
+app.get("/downloads", (req, res, next) => {
+
+    res.send(
+        page(fs.readFileSync("./html/public/dow.html"))
+    )
+});
+
 let lista = (["/js", "/css", "/img", "/app", "/sass", "/font"]);
 
 lista.forEach((e) => {

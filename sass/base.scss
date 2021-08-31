@@ -14,6 +14,42 @@ $font-color: #444;
     background-color: #666;
 }
 
+.wid-box {
+    width: 300px;
+    min-width: 300px;
+    height: max-content;
+    padding: 30px;
+    border-bottom: solid gold 5px;
+    transition: 0.4s;
+    background-color: #222;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.wid-box:hover {
+    /*
+    border-bottom: solid gold 10px;
+    transform: scale(1.2);
+    */
+}
+
+.wid-title {
+    color: gold;
+    font-family: imp;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 30px;
+    padding-top: 0px;
+    text-align: center;
+}
+
+.wid-desc {
+    padding: 15px;
+    width: calc(100% - 30px);
+    text-align: center;
+}
+
+
 * {
     padding: 0%;
     margin: 0%;
@@ -24,6 +60,7 @@ $font-color: #444;
 
 .flex {
     display: flex;
+    flex-wrap: wrap;
 }
 .c-v {align-items: center;}
 .c-h {justify-content: center;}
@@ -34,6 +71,8 @@ $font-color: #444;
     align-items: center;
 }
 .spacing {justify-content: space-around;}
+.spa {@extend .spacing}
+
 
 .suelo {
     width: calc(100% - 40px);

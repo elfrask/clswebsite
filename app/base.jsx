@@ -34,7 +34,7 @@ class Cabeza extends React.Component {
                 >
                     <Bt link="/doc">Documentacion</Bt>
                     <Bt link="https://github.com/elfrask/cls">Github</Bt>
-                    <Bt link="/dowloads">Descarga</Bt>
+                    <Bt link="/downloads">Descarga</Bt>
                     <Bt link="/cpkg">CPKG</Bt>
                 </div>
                 <div
@@ -87,7 +87,7 @@ class Suelo extends React.Component {
                         maxWidth:"500px",
                         minWidth:"315px"
                     }}>
-                    <Img img="/img/icon/dowload.png" className="dilink" size="60" link="/dowloads" />
+                    <Img img="/img/icon/dowload.png" className="dilink" size="60" link="/downloads" />
                     <Img img="/img/icon/doc.png" className="dilink" size="60" link="/doc" />
                     <Img img="/img/icon/pkg.png" className="dilink" size="60" link="/cpkg" style={{backgroundSize:"75%"}} />
                     <Img img="/img/icon/github.png" className="dilink" size="60" link="https://github.com/elfrask/cls" />
@@ -132,6 +132,35 @@ class Cuerpo extends React.Component {
                     {this.props.children}
                 </Body>
                 <Suelo />
+            </div>
+        )
+    }
+}
+
+
+class Wid extends React.Component {
+    render() {
+
+        let tx = 0;
+
+        if (this.props.rpos) {
+            let men = parseInt((Math.random()+"").substr(2))%60
+            tx = men-30
+        }
+
+
+        return (
+            <div className="wid-box" style={{
+                transform:`translate(${tx}px, 0px)`,
+                borderBottomColor:this.props.color||"gold"
+            }}>
+                <div className="wid-title" style={{color:this.props.color||"gold"}}>
+                    {this.props.title||""}
+                </div>
+                <hr />
+                <div className="wid-desc">
+                    {this.props.children||""}
+                </div>
             </div>
         )
     }

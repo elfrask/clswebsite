@@ -3,7 +3,10 @@
 .cls-ope {color: crimson;}
 .cls-value-num {color: rgb(226, 5, 255);}
 .cls-str {color: greenyellow;}
+.cls-str-byte {color: rgb(0, 183, 255);}
 .cls-com {color: grey;}
 .cls-name {color: white;}
-.cls-name-nr {color: deepskyblue;}
+.cls-name-nr {color: rgb(255, 0, 119);}
 .cls-name-var {color: orange; font-style: italic;}
+.cls-name-valdef {color: rgb(0, 183, 255); font-style: oblique;}
+.cls-name-func {color: rgb(0, 255, 157);}
