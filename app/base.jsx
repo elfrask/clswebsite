@@ -3,6 +3,34 @@
 let go = e=>document.getElementById(e);
 let asi = (e, t)=>Object.assign(e, t);
 let genlink = (e) => ()=>{if (e) document.location.assign(e)}
+let send = (link, data) => fetch(link, 
+    {
+        method:"POST",
+        body:JSON.stringify(data||{}),
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }
+);
+
+class Result extends React.Component {
+    render() {
+        return (
+            <div
+                className="resul-box"
+            >
+                <div className="resul-title">
+                    {this.props.title}
+                </div>
+                <div className="resul-cont">
+                    {this.props.children}
+                </div>
+                
+                
+            </div>
+        )
+    }
+}
 
 class Bt extends React.Component {
     render() {
@@ -17,7 +45,6 @@ class Bt extends React.Component {
         )
     }
 }
-
 
 class Cabeza extends React.Component {
     render() {
@@ -107,7 +134,7 @@ class Suelo extends React.Component {
 class Body extends React.Component {
     render() {
         return (
-            <div className="page">
+            <div className="page flex">
                 {this.props.children}
             </div>
         )
@@ -122,7 +149,6 @@ class Clscode extends React.Component {
     }
 }
 
-
 class Cuerpo extends React.Component {
     render() {
         return (
@@ -136,7 +162,6 @@ class Cuerpo extends React.Component {
         )
     }
 }
-
 
 class Wid extends React.Component {
     render() {

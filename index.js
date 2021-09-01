@@ -19,19 +19,54 @@ function plantilla(d = "") {
 
 let page = plantilla("./html/index.html")
 
-app.get("/", (req, res, next) => {
+;(() => {
+    app.get("/", (req, res, next) => {
+    
+        res.send(
+            page(fs.readFileSync("./html/public/init.html"))
+        )
+    });
+    
+    app.get("/downloads", (req, res, next) => {
+    
+        res.send(
+            page(fs.readFileSync("./html/public/dow.html"))
+        )
+    });
+    
+    app.get("/cpkg", (req, res, next) => {
+    
+        res.send(
+            page(fs.readFileSync("./html/public/cpkg.html"))
+        )
+    });
+    
+    app.post("/findpkg", (req, res, next) => {
+        let nombre = req.body.name;
+        let salida = [];
 
-    res.send(
-        page(fs.readFileSync("./html/public/init.html"))
-    )
-});
+        let dire = fs.readdirSync("./cpkg/pkgs", "utf-8");
 
-app.get("/downloads", (req, res, next) => {
+        dire.forEach(e => {
+            if (e.includes(nombre)) salida.push(e)
+        })
 
-    res.send(
-        page(fs.readFileSync("./html/public/dow.html"))
-    )
-});
+        res.send(JSON.stringify(salida.map(e => {
+            let data = JSON.parse(fs.readFileSync("./cpkg/pkgs"+e, "utf-8"));
+
+            return(
+                {
+                    name:e,
+                    ver:data.ver,
+                    page:data.page,
+                    git:data.git,
+                    desc:data.description
+                }
+            )
+        })))
+    })
+})();
+
 
 let lista = (["/js", "/css", "/img", "/app", "/sass", "/font"]);
 

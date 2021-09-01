@@ -49,7 +49,7 @@ class Apppage extends React.Component {
                         <Wid title="CLSlin" color="#f0f">
                             Quieres dar resaltado de codigo CLS en tu pagina?
                             <br /><br />
-                            <a href="/js/clslin/cls.js">
+                            <a href="/js/clslin/cls.js" download="CLSlin.js">
                                 CLSlin
                             </a>
                             
