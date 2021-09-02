@@ -5,6 +5,7 @@ let fs = require('fs')
 let app = express();
 
 app.use(pb.urlencoded({extended:true}));
+app.use(pb.json());
 app.use(galleta(["CLSJS", "CLS", "VINESTAR", "SDIQNEJAIDOWMDOLA", "SDOANNDODAKFLSKE"]));
 
 function plantilla(d = "") {
@@ -19,7 +20,18 @@ function plantilla(d = "") {
 
 let page = plantilla("./html/index.html")
 
-;(() => {
+
+function Api_cpkg() {
+    
+    app.post("/api/cpkg/login", (req, res) => {
+        
+
+    })
+
+}
+
+
+function web() {
     app.get("/", (req, res, next) => {
     
         res.send(
@@ -45,13 +57,17 @@ let page = plantilla("./html/index.html")
         let nombre = req.body.name;
         let salida = [];
 
+        console.log(req.body)
+
         let dire = fs.readdirSync("./cpkg/pkgs", "utf-8");
 
         dire.forEach(e => {
             if (e.includes(nombre)) salida.push(e)
         })
 
-        res.send(JSON.stringify(salida.map(e => {
+        salida = salida.slice(0, 100)
+
+        res.json((salida.map(e => {
             let data = JSON.parse(fs.readFileSync("./cpkg/pkgs"+e, "utf-8"));
 
             return(
@@ -64,8 +80,9 @@ let page = plantilla("./html/index.html")
                 }
             )
         })))
-    })
-})();
+    });
+
+};
 
 
 let lista = (["/js", "/css", "/img", "/app", "/sass", "/font"]);
@@ -74,9 +91,13 @@ lista.forEach((e) => {
 
     app.use(e, express.static("."+e))
 
+});
+
+let f = [web, Api_cpkg];
+
+f.forEach(x=> {
+    x()
 })
-
-
 
 app.listen(9000, () => {
     console.log("server of CLS open in the port 9000")

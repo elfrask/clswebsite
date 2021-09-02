@@ -55,9 +55,13 @@ class Apli extends React.Component {
                                 let res = go("res");
                                 let find = go("find");
 
-                                send("/findpkg", {name:find.value})
-                                    .then(e=>e.text().then((e) => {
-                                        let data = JSON.parse(e);
+                                let sendi = {name:find.value};
+                                console.log("enviado:", sendi)
+
+                                send("/findpkg", sendi)
+                                    .then(e=>e.json().then((e) => {
+                                        //let data = JSON.parse(e);
+                                        let data = (e);
                                         let va = data.map(e=> {
                                             return(
                                                 <Result title={e.name} link={e.page||""}>
