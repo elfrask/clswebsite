@@ -17,11 +17,7 @@ class Apli extends React.Component {
                         <Wid title="Como instalar un paquete?" color="dodgerblue">
                             el solo instalar un paquete es tan facil como poner:
                             <br /><br />
-                            <code type="cls">cpkg -i [paquete]</code> 
-                            <br />
-                            <br />
-                            <br />
-                            <code type="cls">cpkg -i -g [paquete]</code>
+                            <code type="cls">cpkg install [paquete]</code> 
                         </Wid>
                     </div>
                     <div className="d2">

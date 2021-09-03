@@ -1,7 +1,7 @@
 let express = require('express');
 let pb = require('body-parser');
 let galleta = require('cookie-parser');
-let fs = require('fs')
+let fs = require('fs');
 let app = express();
 
 app.use(pb.urlencoded({extended:true}));
@@ -23,9 +23,91 @@ let page = plantilla("./html/index.html")
 
 function Api_cpkg() {
     
-    app.post("/api/cpkg/login", (req, res) => {
+    app.post("/api/cpkg/infopkg", (req, res) => {
+        
+        console.log(req.body)
+
+        res.json({
+            name:"resibido"
+        })
+    });
+
+    app.post("/api/cpkg/isuser", (req, res) => {
+        let up = "./cpkg/users/" + req.body.user
+        let re = {
+            user:fs.existsSync(up)
+        }
+
+        if (re.user) re.pass = JSON.parse(fs.readFileSync(up)).pass === req.body.pass;
+
+        res.json(re)
+    });
+
+    app.post("/api/cpkg/repass", (req, res) => {
+        let up = "./cpkg/users/" + req.body.user
+        let re = {
+            user:fs.existsSync(up),
+            pass:false,
+            repass:false
+        }
+
+        if (re.user) re.pass = JSON.parse(fs.readFileSync(up)).oldpass === req.body.pass;
+
+        if (re.pass) {
+            let d = JSON.parse(fs.readFileSync(up));
+            d.pass = req.body.pass;
+
+            fs.writeFileSync(up, JSON.stringify(d))
+
+            re.repass = true
+        }
+
+        res.json(re)
+    });
+
+    app.post("/api/cpkg/register", (req, res) => {
+        let dt = req.body;
+        let up = "./cpkg/users/" + req.body.user;
+        let re = {reg:true};
+
+        if (fs.existsSync(up)) {
+            re.reg = false
+        } else {
+            fs.writeFileSync(up, JSON.stringify(
+                {
+                    user:dt.user,
+                    pass:dt.pass,
+                    email:dt.email,
+                    domains:{}
+                }
+            ))
+        }
+
+        res.json(re)
+    })
+
+    app.post("/api/cpkg/isdom", (req, res) => {
         
 
+        res.json({
+            free:!fs.existsSync("./cpkg/pkgs/"+req.body.name)
+        })
+    })
+
+    app.post("/api/cpkg/saveuser", (req, res) => {
+        let up = "./cpkg/users/" + req.body.user
+        let re = {
+            user:fs.existsSync(up),
+            save:false
+        }
+
+        if (re.user) {
+            re.email = JSON.parse(fs.readFileSync(up)).email;
+            re.save = true
+
+        }
+
+        res.json(re)
     })
 
 }

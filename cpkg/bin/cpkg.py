@@ -4,6 +4,7 @@ import shutil
 import sys
 import git
 import json
+import pickle
 
 pack = os.path.dirname(__file__)
 
@@ -39,8 +40,8 @@ ayuda = {
                 etiquetas.cmd("cpkg install [paquete]", "instalar un paquete"),
                 etiquetas.cmd("cpkg uninstall [paquete]", "desinstalar un paquete"),
                 etiquetas.cmd("cpkg list", "listar paquetes instalados"),
-                etiquetas.cmd("cpkg upgrade [paquete]", "actualizar un paquete"),
-                etiquetas.cmd("cpkg upgrade", "actualizar todos los paquetes"),
+                etiquetas.cmd("cpkg update [paquete]", "actualizar un paquete"),
+                etiquetas.cmd("cpkg update", "actualizar todos los paquetes"),
             ]
         ),
         etiquetas.categoria(
@@ -95,6 +96,40 @@ ayuda = {
     ]
 }
 
+def cwd():
+    app_path = ""
+
+    if getattr(sys, 'frozen', False):
+        app_path = os.path.dirname(sys.executable)
+    elif __file__:
+        app_path = os.path.dirname(__file__)
+
+    return app_path
+
+work = cwd()
+server = "http://localhost:9000/api/cpkg"
+
+conf = {
+    "user":"",
+    "pass":"",
+    "login":False
+}
+
+def save_conf(): 
+    pickle.dump(conf, open(work +"/cpkg.conf", "wb"))
+
+if os.path.exists(work +"/cpkg.conf"):
+    try:
+        conf = pickle.load(open(work +"/cpkg.conf", "rb"))
+    except:
+        print("el archivos de configuraciones fue corrompido por lo que se ha arreglado") 
+        save_conf()
+    pass
+else:
+    save_conf()
+    pass
+
+
 
 
 def tobj(ob = []):
@@ -105,33 +140,62 @@ def tobj(ob = []):
         itera+=1
     return salida
 
+def _ayuda():
+    
+    for i in ayuda["head"]:
+        print("  "+i)
+        pass
+    for i in ayuda["lista"]:
+        print(N*2)
+        print(f'  +{i["title"]}')
+        print()
+        for x in i["cmds"]:
+            print("    -"+x["cmd"])
+            
+            for y in x["des"]:
+                print("        " + y)
+                pass
+            print()
+            pass
+        
+        pass
+    
+
+    pass
+
 def main(argv = []):
     
-    if (len(argv) == 1) or (tobj(argv).get(0, None) in ["-h", "/h", "-H", "/H", "help", "--help", "-help"]):
+    if (len(argv) == 1) or (tobj(argv).get(1, None) in ["-h", "/h", "-H", "/H", "help", "--help", "-help"]):
         
-        for i in ayuda["head"]:
-            print("  "+i)
-            pass
-        for i in ayuda["lista"]:
-            print(N*2)
-            print(f'  +{i["title"]}')
-            print()
-            for x in i["cmds"]:
-                print("    -"+x["cmd"])
-                
-                for y in x["des"]:
-                    print("        " + y)
-                    pass
-                print()
-                pass
-            
-            pass
-        
+        _ayuda()
 
         pass
     else:
-        arg = tobj(argv)
+        #arg = tobj(argv)
 
+        if len(argv) == 3:
+            if argv[1] == "install":
+
+                res = requests.post(server+ "/infopkg", {"name":argv[2]})
+
+                if res.status_code == 200:
+                    data = res.json()
+
+                    if data.get("exist", False):
+                        #descargar desde el git
+                        pass
+                    else:
+                        print(f"el paquete '{argv[2]}' no a sido encontrado")
+
+                    pass
+                else:
+                    print("no se ha podido establecer conexion con el servidor")
+
+                pass
+            elif argv[1] == "unistall":
+                pass
+
+            pass
 
 
         pass

@@ -8,10 +8,15 @@ class Apppage extends React.Component {
             <div>
                 <Cuerpo>
                     <div style={{width:"100%", height:"50px"}} />
-                    <div className="flex c-h">
+                    <div className="flex c-h" style ={{
+                        margin:"auto",
+                        width:"100%"
+                    }}>
                         <div
                         style={{
-                            width:"500px"
+                            width:"100%",
+                            maxWidth:"500px",
+
                         }}
                         >
 
@@ -38,7 +43,7 @@ function fibonacci(fib) {
     return l
 };
 
-print(fibonacci(100));
+print(fibonacci(30));
 
 
 
@@ -52,14 +57,14 @@ print(fibonacci(100));
                                 backgroundColor:"#111",
                                 padding:"20px"
                             }}>
-                                <Clscode code = "> [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]"/>
+                                <Clscode code = "> [0, 1, 1, 2, 3, 5, 8, 13, 21]"/>
                             </div>
                         </div>
                     </div>
                     <div style={{width:"100%", height:"50px"}} />
                     <div style={{
-                        backgroundColor:"#333", width:"calc(100% - 40px)", height:"max-content",
-                        padding:"20px"
+                        backgroundColor:"#333", width:"100%", height:"max-content",
+                        padding:"0px"
                         }}>
                         <Dow />
                         <Info />
@@ -76,9 +81,10 @@ print(fibonacci(100));
 class Info extends React.Component {
     render() {
         return (
-            <div className="flex c-h spa" 
+            <div className="flex c-h" 
             style={{
                 margin:"auto",
+                
 
             }}
             >
@@ -115,12 +121,12 @@ class Info extends React.Component {
 class Dow extends React.Component {
     render() {
         return (
-            <div className="flex c-h spa" 
+            <div className="flex c-h" 
             style={{
                 margin:"auto",
                 backgroundColor:"#444",
-                padding:"40px",
-                borderRadius:"50px"
+                width:"calc(100% - 40px)",
+                padding:"20px",
             }}
             >
                 <Wid title="Esta disponible?" color="dodgerblue">

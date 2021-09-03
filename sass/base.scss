@@ -15,8 +15,9 @@ $font-color: #444;
 }
 
 .wid-box {
-    width: 300px;
-    min-width: 300px;
+    width: 100%;
+    min-width: 250px;
+    max-width: 300px;
     height: max-content;
     padding: 30px;
     border-bottom: solid gold 5px;
