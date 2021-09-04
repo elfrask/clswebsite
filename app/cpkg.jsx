@@ -57,6 +57,9 @@ class Apli extends React.Component {
                                 send("/findpkg", sendi)
                                     .then(e=>e.json().then((e) => {
                                         //let data = JSON.parse(e);
+
+                                        console.log(e)
+
                                         let data = (e);
                                         let va = data.map(e=> {
                                             return(

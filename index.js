@@ -22,6 +22,24 @@ let page = plantilla("./html/index.html")
 
 
 function Api_cpkg() {
+
+    function user(user, pass) {
+        let up = "./cpkg/users/" + user;
+        let ue = fs.existsSync(up);
+        let data= {}
+        if (ue) {
+            data = JSON.parse(fs.readFileSync(up, "utf-8"))
+        }
+
+        return Object.assign((d) => {
+            fs.writeFileSync(up, JSON.stringify(d))
+        }, {
+            exist:ue,
+            data:data,
+            pass:(data||{}).pass === pass,
+            user:user
+        })
+    }
     
     app.post("/api/cpkg/infopkg", (req, res) => {
         
@@ -78,21 +96,127 @@ function Api_cpkg() {
                     user:dt.user,
                     pass:dt.pass,
                     email:dt.email,
-                    domains:{}
+                    domains:[]
                 }
             ))
         }
 
         res.json(re)
-    })
+    });
 
     app.post("/api/cpkg/isdom", (req, res) => {
         
 
         res.json({
-            free:!fs.existsSync("./cpkg/pkgs/"+req.body.name)
+            free:fs.existsSync("./cpkg/pkgs/"+req.body.name)
         })
-    })
+    });
+
+    app.post("/api/cpkg/listdom", (req, res) => {
+        
+        let lista = [];
+        let usu = user(req.body.user)
+        console.log(usu)
+        if (usu.exist) lista = usu.data.domains
+
+        res.json({
+            list:lista
+        })
+    });
+
+    app.post("/api/cpkg/getdom", (req, res) => {
+        let yes = fs.existsSync("./cpkg/pkgs/"+req.body.name)
+        let usu = user(req.body.user, req.body.pass)
+        if (!yes) {
+            if (usu.exist & usu.pass) {
+                usu.data.domains.push(req.body.name)
+                usu(usu.data)
+                
+                fs.writeFileSync("./cpkg/pkgs/"+req.body.name,
+                    JSON.stringify({
+                        ver:"1.0",
+                        page:"",
+                        git:"",
+                        name:req.body.name,
+                        user:req.body.user,
+                        desc:"nuevo dominio " + req.body.name
+                    })
+                )
+            } else {
+                yes = false
+            }
+        }
+
+        res.json({
+            done: !yes
+        })
+    });
+
+    app.post("/api/cpkg/deldom", (req, res) => {
+        let yes = fs.existsSync("./cpkg/pkgs/"+req.body.name)
+        let usu = user(req.body.user, req.body.pass)
+        if (yes) {
+            if (usu.exist & usu.pass & (usu.data.domains.includes(req.body.name))) {
+                let pack = req.body.name;
+
+                usu.data.domains = usu.data.domains.filter(x => {
+                    if (!(x===pack)) return x
+                })
+                
+                fs.unlinkSync("./cpkg/pkgs/"+req.body.name)
+                usu(usu.data)
+            } else {
+                yes = false
+            }
+        }
+
+        res.json({
+            done: yes
+        })
+    });
+
+    app.post("/api/cpkg/editdom", (req, res) => {
+        let yes = fs.existsSync("./cpkg/pkgs/"+req.body.name)
+        let usu = user(req.body.user, req.body.pass)
+        if (yes) {
+            if (usu.exist & usu.pass & (usu.data.domains.includes(req.body.name))) {
+                
+                let pack = JSON.parse(fs.readFileSync("./cpkg/pkgs/"+req.body.name, "utf8"))
+
+                pack[req.body.edit] = req.body.data;
+
+                fs.writeFileSync("./cpkg/pkgs/"+req.body.name,
+                    JSON.stringify(pack)
+                )
+
+
+            } else {
+                yes = false
+            }
+        }
+
+        res.json({
+            done: yes
+        })
+    });
+
+    app.post("/api/cpkg/infodom", (req, res) => {
+        let yes = fs.existsSync("./cpkg/pkgs/"+req.body.name);
+        let out = "";
+        if (yes) {
+            out = JSON.parse(
+                fs.readFileSync(
+                    "./cpkg/pkgs/"+req.body.name, 
+                    "utf8"
+                )
+            )
+        }
+
+        res.json({
+            done: yes,
+            data: out
+        })
+    });
 
     app.post("/api/cpkg/saveuser", (req, res) => {
         let up = "./cpkg/users/" + req.body.user
@@ -108,7 +232,7 @@ function Api_cpkg() {
         }
 
         res.json(re)
-    })
+    });
 
 }
 
@@ -150,7 +274,7 @@ function web() {
         salida = salida.slice(0, 100)
 
         res.json((salida.map(e => {
-            let data = JSON.parse(fs.readFileSync("./cpkg/pkgs"+e, "utf-8"));
+            let data = JSON.parse(fs.readFileSync("./cpkg/pkgs/"+e, "utf-8"));
 
             return(
                 {
@@ -158,7 +282,8 @@ function web() {
                     ver:data.ver,
                     page:data.page,
                     git:data.git,
-                    desc:data.description
+                    desc:data.desc,
+                    user:data.user
                 }
             )
         })))
