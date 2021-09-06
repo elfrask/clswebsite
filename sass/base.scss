@@ -144,11 +144,7 @@ $font-color: #444;
 
 .head {
     @extend .suelo;
-
-    
     justify-content: space-between;
-
-
 }
 
 code {
@@ -162,10 +158,89 @@ code {
 .land {display: none;}
 .port {display: none;}
 .d2 {float: left;}
+
+$panel-ancho:300px;
+
+.doc-panel {
+    width: $panel-ancho;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    background-color: #444;
+    transform: translate(0%, 0%);
+
+}
+.doc-page{
+    width: calc(100% - 340px);
+    padding: 20px;
+    height: calc(100% - 40px);
+    overflow: auto;
+    background-color: #222;
+    transform: translate($panel-ancho, 0px);
+    transition: 0.4s;
+}
+
+.tn {
+    width: 100%;
+    height: 40px;
+    overflow: hidden;
+
+}
+
+.title-treenodo{
+    padding: 10px;
+    width: calc(100% - 20px);
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    transition: 0.4s;
+}
+.title-treenodo:hover {
+    background-color: #222;
+}
+
+.sub-treenodo{
+    padding-left: 10px;
+    width: calc(100% - 10px);
+}
+
+.nodo {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.4s;
+
+}
+.nodo:hover {
+    background-color: #222;
+}
+
+.sd {
+    @extend .imgb;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    background-image: url("/img/plus.png");
+    background-color: #fff;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+
+}
+
 @media (orientation:portrait) {
     .port {display: block;}
     .aco {flex-direction: column;}
     .d2 {width: 100%; height: max-content;}
+    .doc-page{
+        width: calc(100% - 40px);
+        transform: translate(0px, 0px);
+    }
+    .doc-panel-o{
+        width: calc(100%);
+        transform: translate(-100%, 0px);
+    }
 }
 @media (orientation:landscape) {
     .land {display: block;}

@@ -64,7 +64,8 @@ print(fibonacci(30));
                     <div style={{width:"100%", height:"50px"}} />
                     <div style={{
                         backgroundColor:"#333", width:"100%", height:"max-content",
-                        padding:"0px"
+                        padding:"0px", borderTopLeftRadius:"40px", borderTopRightRadius:"40px",
+                        overflow:"hidden"
                         }}>
                         <Dow />
                         <Info />
@@ -84,6 +85,7 @@ class Info extends React.Component {
             <div className="flex c-h" 
             style={{
                 margin:"auto",
+                maxWidth:"810px",
                 
 
             }}
@@ -127,6 +129,10 @@ class Dow extends React.Component {
                 backgroundColor:"#444",
                 width:"calc(100% - 40px)",
                 padding:"20px",
+                maxWidth:"840px",
+                borderBottomRightRadius:"40px",
+                borderBottomLeftRadius:"40px"
+
             }}
             >
                 <Wid title="Esta disponible?" color="dodgerblue">

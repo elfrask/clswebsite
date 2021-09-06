@@ -79,7 +79,7 @@ class Cabeza extends React.Component {
     }
 }
 
-class Img extends React.Component {//style, size, className, link
+class Img extends React.Component {//style, size, className, link, img
     
     render() {
 

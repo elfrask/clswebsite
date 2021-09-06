@@ -65,6 +65,8 @@ class Apli extends React.Component {
                                             return(
                                                 <Result title={e.name} link={e.page||""}>
                                                     ({e.name}-{e.ver}) {e.desc}
+                                                    <br />
+                                                    Autor: {e.user}
                                                 </Result>
                                             )
                                         });

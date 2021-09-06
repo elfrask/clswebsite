@@ -3,7 +3,7 @@ class Apppage extends React.Component {
     render() {
         return (
             <Cuerpo>
-                <div style={{width:"100%", height:"max-content"}}>
+                <div style={{width:"100%", height:"max-content", maxWidth:"800px", margin:"auto"}}>
 
                     <div className="flex spa">
 
@@ -35,6 +35,13 @@ class Apppage extends React.Component {
                             <br /><br />
                             <a href="#web">
                                 CLSJS
+                            </a>
+                            <br />
+                            <br />
+                            descarga CLSJS-Modules-0.4b para complementar CLSJS
+                            <br /><br />
+                            <a href="#web">
+                                CLSJS-Modules
                             </a>
                             
                         </Wid>

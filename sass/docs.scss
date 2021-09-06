@@ -1,0 +1,42 @@
+p{
+    text-align: left;
+    font-size: 15px;
+}
+
+hr {
+    margin: 20px;
+}
+
+.h-num {
+    font-weight: bold;
+    line-height: 200%;
+    padding: 10px
+}
+
+h1 {
+    @extend .h-num;
+    font-size: 30px;
+}
+h2 {
+    @extend .h-num;
+    font-size: 27px;
+}
+h3 {
+    @extend .h-num;
+    font-size: 24px;
+}
+h4 {
+    @extend .h-num;
+    font-size: 20px;
+}
+h5 {
+    @extend .h-num;
+    font-size: 18px;
+}
+h6 {
+    @extend .h-num;
+    font-size: 16px;
+}
+
+
+

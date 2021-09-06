@@ -3,6 +3,7 @@ let pb = require('body-parser');
 let galleta = require('cookie-parser');
 let fs = require('fs');
 let app = express();
+let doc = require("./doc");
 
 app.use(pb.urlencoded({extended:true}));
 app.use(pb.json());
@@ -258,6 +259,16 @@ function web() {
             page(fs.readFileSync("./html/public/cpkg.html"))
         )
     });
+
+    app.get("/get_tree_doc", (req, res) => {
+        res.json(doc.meta())
+    })
+
+    app.get("/doc", (req, res) => {
+        res.send(
+            page(fs.readFileSync("./html/public/doc.html"))
+        )
+    })
     
     app.post("/findpkg", (req, res, next) => {
         let nombre = req.body.name;
@@ -292,7 +303,7 @@ function web() {
 };
 
 
-let lista = (["/js", "/css", "/img", "/app", "/sass", "/font"]);
+let lista = (["/js", "/css", "/img", "/app", "/sass", "/font", "/docs"]);
 
 lista.forEach((e) => {
 
