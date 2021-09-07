@@ -1,7 +1,7 @@
-<h1>
+<h1 class="gold">
 	Hola Mundo!
 </h1>
-<p>
+<p style="color: #aad">
 	Bienvenidos a la documentacion oficial de CLS! aqui se ofrece 
 	todo el contenido documentativo que trae el proyecto CLS de
 	forma oficial, esta documentacion intenta estar actualizada
@@ -37,6 +37,19 @@
 	un lenguaje de programacion facil de usar (mas si eres
 	un programador proveniente de Java, C++, JavaScript, C#,
 	entre otras de sintaxis similares) si eres nuevo en la
-	programacion tal vez CLS sea una opcion a elegir
+	programacion tal vez CLS sea una opcion a elegir para
+	aprender
+</p>
 <br>
 <br>
+<h2>
+	Historio
+</h2>
+<p>
+	Puedes ver la historio del proyecto aqui: 
+	<a href="/doc?link=/info/story.md" class="green">Historia</a>
+</p>
+<br>
+<code type="cls">
+	print("Hello World")
+</code>

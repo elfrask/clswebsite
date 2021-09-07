@@ -1,5 +1,18 @@
 
 
+function get_args() {
+    let ser = document.location.search.substr(1);
+    let ma = ser.split("&")
+    let salida= {}
+
+    ma.forEach(x=>{
+        let d= x.split("=")
+        salida[d[0]] = d[1]
+    })
+    return salida
+}
+
+
 let go = e=>document.getElementById(e);
 let asi = (e, t)=>Object.assign(e, t);
 let genlink = (e) => ()=>{if (e) document.location.assign(e)}
@@ -84,12 +97,14 @@ class Img extends React.Component {//style, size, className, link, img
     render() {
 
         let toli = asi(
-            this.props.style||{},
-            {
-                backgroundImage:`url("${this.props.img||""}")`,
-                width:(this.props.ancho||this.props.size||"100")+"px",
-                height:(this.props.alto||this.props.size||"100")+"px",
-            });
+            asi(
+                this.props.style||{},
+                {
+                    backgroundImage:`url("${this.props.img||""}")`,
+                    width:(this.props.ancho||this.props.size||"100")+"px",
+                    height:(this.props.alto||this.props.size||"100")+"px",
+                }), 
+            this.props.post_style||{});
         //console.log(toli)
         return (
             <div 
@@ -144,7 +159,7 @@ class Body extends React.Component {
 class Clscode extends React.Component {
     render() {
         return (
-            <div dangerouslySetInnerHTML={{__html: toConvert(this.props.code)}} />
+            <div dangerouslySetInnerHTML={{__html: Clslin(this.props.code)}} />
         )
     }
 }

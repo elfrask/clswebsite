@@ -1,7 +1,8 @@
 
 .cls-sim {color: gold;}
 .cls-ope {color: crimson;}
-.cls-value-num {color: rgb(226, 5, 255);}
+.cls-value-num {color: rgb(237, 97, 255);}
+.cls-name-num {color: rgb(237, 97, 255);}
 .cls-str {color: greenyellow;}
 .cls-str-byte {color: rgb(0, 183, 255);}
 .cls-com {color: grey;}

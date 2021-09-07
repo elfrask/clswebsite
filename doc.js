@@ -7,7 +7,23 @@ module.exports.meta= function () {
                 node("Historia de CLS", "info/story.md"),
             ]
 
-        )
+        ),
+        treenode(
+            "Sintaxis de CLS",
+            [
+                treenode(
+                    "Sintaxis basica de CLS",
+                    [
+                        node("Tipo de dato I", "tuto/values.md"),
+                        node("Tipo de dato II", "tuto/values2.md"),
+                        node("Variables", "tuto/vars.md"),
+                        node("Llamadas y funciones", "tuto/calls.md"),
+                    ]
+                ),
+            ]
+
+        ),
+        
     ]
 };
 

@@ -1,10 +1,60 @@
 p {
   text-align: left;
   font-size: 15px;
+  padding: 10px;
+  color: #aaf;
+}
+
+a {
+  color: greenyellow;
+}
+
+.block {
+  border-radius: 20px;
+  padding: 20px;
+  width: calc(100px - 40px);
+  height: max-content;
+}
+
+.gold {
+  color: gold;
+}
+
+.green {
+  color: yellowgreen;
+}
+
+.red {
+  color: crimson;
+}
+
+.blue {
+  color: dodgerblue;
+}
+
+.orange {
+  color: orange;
+}
+
+.purple {
+  color: #cc00ff;
+}
+
+.fu {
+  color: fuchsia;
 }
 
 hr {
   margin: 20px;
+}
+
+code {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: calc(100% - 40px);
+  height: max-content;
+  appearance: auto;
+  overflow: auto;
 }
 
 .h-num, h6, h5, h4, h3, h2, h1 {

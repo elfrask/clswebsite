@@ -1,9 +1,10 @@
 
-let toConvert = (() => {
+let Clslin = (() => {
 
     let tools = {
         enter_value: (d) => {
             let salida = "name"
+            if (d==="0.0") return["0.0", "int"]
             if ((parseInt(d) + "") == (d + "")) {
                 salida = "int"
             } else if ((parseFloat(d) + "") == (d + "")) {
@@ -179,7 +180,7 @@ let toConvert = (() => {
         },
         replace:(cadena, viejo, nuevo) => {
             while (cadena.includes(viejo)) {
-                cadena.replace(viejo, nuevo)
+                cadena = cadena.replace(viejo, nuevo)
             };
             return cadena
         },
@@ -562,7 +563,6 @@ let toConvert = (() => {
             }
         }
     }
-
     let name_re = {
         nr:[
             "function", "var", "class", "module", "namespace", "return",
@@ -604,6 +604,8 @@ let toConvert = (() => {
         let tag = ""
         let t_count = 0;
         let i = 0
+
+        c = tools.replace(c, tools.chars.T, "    ");
 
 
         for (i = 0; i < c.length; i++) {

@@ -11,7 +11,7 @@ class Treenodo extends React.Component {
                     go(id).style.height = open?"40px":"max-content";
                     open = !open;
                 }}>
-                    {this.props.title}
+                    + {this.props.title}
                 </div>
                 <div className="sub-treenodo">
                     {this.props.children}
@@ -22,11 +22,23 @@ class Treenodo extends React.Component {
     }
 }
 
+class Nodo extends React.Component {
+    render() {
+        return (
+            <div className="nodo" onClick={() =>{
+                render_page(this.props.link)
+            }}>
+               - {this.props.children}
+            </div>
+        )
+    }
+}
+
 function render_page(link) {
     let doc = go("docpage");
     fetch("/docs/" + link).then(e=>e.text().then(x=>{
         doc.innerHTML = x
-        toConvert.refresh()
+        Clslin.refresh()
         go("panel").style.zIndex = 0
         prop = false
 
@@ -34,17 +46,6 @@ function render_page(link) {
 }
 
 
-class Nodo extends React.Component {
-    render() {
-        return (
-            <div className="nodo" onClick={() =>{
-                render_page(this.props.link)
-            }}>
-                {this.props.children}
-            </div>
-        )
-    }
-}
 let prop = false
 
 class Apli extends React.Component {
@@ -59,11 +60,15 @@ class Apli extends React.Component {
 
                 
                 <div className="doc-panel" id="panel">
-                    <Img size="300" img="/img/logo.png" style={{
+                    <Img size="200" img="/img/logo.png" style={{
                         "backgroundSize":"100px",
-                        "backgroundColor":"#333",
+                        "backgroundColor":"#444",
                         "cursor":"pointer",
-                    }} link="/"/>
+                    }} 
+                    post_style={{
+                        width:"100%"
+                    }}
+                    link="/"/>
 
                     <div id="tree">
 
@@ -74,7 +79,7 @@ class Apli extends React.Component {
 
                 </div>
 
-                <div className="port sd" onClick = {() => {
+                <div className="port sd" style={{zIndex:2}} onClick = {() => {
                     go("panel").style.zIndex = prop?0:1
                     prop = !prop
                 }}/>
@@ -101,7 +106,7 @@ function tree(x) {
             )
         } else if (e.tipo === "treenode") {
             salida.push(
-                <Treenodo title={e.title} link={e.link}>
+                <Treenodo title={e.title} link={e.link} len={e.nodes.length}>
                     {tree(e)}
                 </Treenodo>
             )
@@ -122,7 +127,13 @@ ReactDOM.render(<Apli/>, go("__body__"), (e) => {
         
         ReactDOM.render(salida, arbol, () => {
 
-            document.title = "CLS Documentacion Oficial"
+            document.title = "CLS Documentacion Oficial";
+
+            let arg = get_args();
+
+            if (arg.doc||arg.link) {
+                render_page(arg.doc||arg.link)
+            }
 
         })
     }))

@@ -96,6 +96,12 @@ class Info extends React.Component {
                     y manejar con una sintaxis parecida a Java concervando
                     algunas caracteristicas de C++ y caracteristicas opcionales.
                 </Wid>
+                <Wid title="Que caracteriza a CLS?" color="yellowgreen">
+                    Cls es un lenguaje de programacion que seria el indicado
+                    para aprender a programar ya que incorpora muchas bases de la
+                    programacion en una misma sintaxis de la cual se puede aprender
+                    a corto plazo.
+                </Wid>
                 <Wid title="Para que sirve?" color="dodgerblue">
                     Cls esta hecho para crear aplicaciones de escritorio, 
                     aplicaciones web y aplicaciones mobiles 
@@ -103,12 +109,6 @@ class Info extends React.Component {
                     y dando a cls la capacidad de manejar la Api que desees en caso
                     que quieras incorporarlo a proyectos que soporten plugins, mods,
                     agregados, etc.
-                </Wid>
-                <Wid title="Que caracteriza a CLS?" color="yellowgreen">
-                    Cls es un lenguaje de programacion que seria el indicado
-                    para aprender a programar ya que incorpora muchas bases de la
-                    programacion en una misma sintaxis de la cual se puede aprender
-                    a corto plazo.
                 </Wid>
                 <Wid title="Que es Cpkg?" color="crimson">
                     Cpkg es el gestor de paquetes oficial de CLS para descargar,
@@ -140,18 +140,19 @@ class Dow extends React.Component {
                     de CLS: CLS y CLSJS una dedicada al uso general y otra dedicada
                     solo para la web, puedes descargar CLS <a href="/downloads">aqui</a>
                 </Wid>
-                <Wid title="Donde esta su codigo?" color="crimson">
-                    Cls posee su reposotorio de Github donde encontraras sus dos
-                    versiones <a href="https://github.com/elfrask/cls">aqui</a>.
-                </Wid>
-                <Wid title="Quieres saber mas?">
-                    Cls tiene una documentacion online la cual puedes consultar <a href="/doc">aqui</a>.
-                </Wid>
                 <Wid title="Librerias para CLS?" color="yellowgreen">
                     Cpkg es el gestor de paquetes oficial de CLS pero tiene
                     un buscador online que te permite buscar paquetes para tus
                     proyectos puedes ir al proyecto Cpkg <a href="/cpkg">aqui</a>.
                 </Wid>
+                <Wid title="Donde esta su codigo?" color="crimson">
+                    Cls posee su repositorio de Github donde encontraras sus dos
+                    versiones <a href="https://github.com/elfrask/cls">aqui</a>.
+                </Wid>
+                <Wid title="Quieres saber mas?">
+                    Cls tiene una documentacion online la cual puedes consultar <a href="/doc">aqui</a>.
+                </Wid>
+                
             </div>
         )
     }
