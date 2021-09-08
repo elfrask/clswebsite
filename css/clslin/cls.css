@@ -1,6 +1,6 @@
 
 .cls-sim {color: gold;}
-.cls-ope {color: crimson;}
+.cls-ope {color: rgb(255, 65, 103);}
 .cls-value-num {color: rgb(237, 97, 255);}
 .cls-name-num {color: rgb(237, 97, 255);}
 .cls-str {color: greenyellow;}
@@ -8,7 +8,7 @@
 .cls-com {color: grey;}
 .cls-cml {color: green;}
 .cls-name {color: white;}
-.cls-name-nr {color: rgb(255, 0, 119);}
+.cls-name-nr {color: rgb(255, 24, 70);}
 .cls-name-var {color: orange; font-style: italic;}
 .cls-name-valdef {color: rgb(0, 183, 255); font-style: oblique;}
 .cls-name-func {color: rgb(0, 255, 157);}

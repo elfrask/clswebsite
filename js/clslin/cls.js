@@ -620,6 +620,7 @@ let Clslin = (() => {
                             cadena = ""
                         }
 
+
                         if ((linea[linea.length - 1] || {}).tipo === "ope") {
                             let w = linea[linea.length - 1].char;
 
@@ -920,9 +921,12 @@ let Clslin = (() => {
     }
 
     let toConverti = (e) => {
-        let mo = desline(trim(e));
+        
+        let mo = desline(
+            tools.replace(trim(e), "&gt;", ">")
+        );
         let salida = "";
-
+        console.log(e)
         for (let i = 0; i < mo.length; i++) {
             const ee = mo[i];
 
@@ -938,6 +942,7 @@ let Clslin = (() => {
                         salida = salida + `<span class="cls-sim">${e.char}</span>`
                     }
                 } else if (e.tipo === "ope") {
+                    //console.log(e.char)
                     salida = salida + `<span class="cls-ope">${tohtml(e.char)}</span>`
                 } else if (e.tipo === "value") {
                     if (["int", "float"].includes(e.type)) {
@@ -965,6 +970,9 @@ let Clslin = (() => {
                                 }.</span><span class="cls-name-func">${
                                     nombre.slice(-1).join("")
                                 }</span>`
+                                if (out.substr(0,2) == "..") {
+                                    out = out.substr(1)
+                                }
                                 
                             }
                         } else if ((e.name+"").includes(".")) {
@@ -1005,7 +1013,7 @@ let Clslin = (() => {
 
                     } else {
                         if (e.name[0] === ".") {
-                            out = `.${nombre.join(".")}`
+                            out = `.${nombre.slice(1).join(".")}`
                         } else if ((e.name+"").includes(".")) {
                             out = (
                 `<span class="cls-name${bolname(nombre[0])}">${

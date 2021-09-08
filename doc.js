@@ -17,7 +17,8 @@ module.exports.meta= function () {
                         node("Tipo de dato I", "tuto/values.md"),
                         node("Tipo de dato II", "tuto/values2.md"),
                         node("Variables", "tuto/vars.md"),
-                        node("Llamadas y funciones", "tuto/calls.md"),
+                        node("Funciones", "tuto/calls.md"),
+                        node("Clases", "tuto/class.md"),
                     ]
                 ),
             ]

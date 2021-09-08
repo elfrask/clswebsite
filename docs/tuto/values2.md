@@ -85,12 +85,29 @@
 	le asignara a la clave
 </p>
 <code type="cls">
-#Una Objeto
+# Una Objeto con datos
+# de una persona (Autor)
 {
-	saludo:"Hola mundo",
-	nombre:"Jose",
-	edad:18,
+	nombre:"Frask",
+	edad:17,
 	casado:false,
-	"tipo-trabajo":"Programador"
+	trabajo:"Programador"
 }
+</code>
+<p>
+	No puedes poner simbolos en las claves almenos que lo encierres
+	en comillas como en el ejemplo siguiente
+</p>
+<code type="cls">
+# esto esta mal
+{
+	codigo-cls:"print('Hola Mundo')"
+}
+
+# esto esta bien
+{
+	"codigo-cls":"print('Hola Mundo')"
+}
+
+
 </code>

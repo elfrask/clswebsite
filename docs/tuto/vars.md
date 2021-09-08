@@ -11,7 +11,7 @@
 <p>
 	Una vez aclarado que son las variables hablaremos de los tipos de variables:
 </p>
-<h4 class="blue">
+<h4 class="green">
 	Variables convencionales
 </h4>
 <p>
@@ -73,13 +73,13 @@ saludo = "Hola mundo";
 </code>
 <br>
 <br>
-<h4 class="blue">
+<h4 class="green">
 	Variables constantes
 </h4>
 <p>
 	Las variables constantes son variables que solo se
 	establecen una vez y no se puede cambiar su valor
-	iniciar de intentarlo el programa crechea.
+	inicial de intentarlo el programa crechea.
 	<br>
 	<br>
 	Las variables constantes se establecen de la siguiente manera:
