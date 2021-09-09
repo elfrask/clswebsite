@@ -9,18 +9,14 @@ module.exports.meta= function () {
 
         ),
         treenode(
-            "Sintaxis de CLS",
+            "Tutorial de CLS",
             [
-                treenode(
-                    "Sintaxis basica de CLS",
-                    [
-                        node("Tipo de dato I", "tuto/values.md"),
-                        node("Tipo de dato II", "tuto/values2.md"),
-                        node("Variables", "tuto/vars.md"),
-                        node("Funciones", "tuto/calls.md"),
-                        node("Clases", "tuto/class.md"),
-                    ]
-                ),
+                node("Tipo de dato I", "tuto/values.md"),
+                node("Tipo de dato II", "tuto/values2.md"),
+                node("Variables", "tuto/vars.md"),
+                node("Funciones", "tuto/calls.md"),
+                node("Clases", "tuto/class.md"),
+                node("Modulos", "tuto/module.md"),
             ]
 
         ),
