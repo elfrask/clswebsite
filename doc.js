@@ -11,15 +11,30 @@ module.exports.meta= function () {
         treenode(
             "Tutorial de CLS",
             [
+        
                 node("Tipo de dato I", "tuto/values.md"),
                 node("Tipo de dato II", "tuto/values2.md"),
                 node("Variables", "tuto/vars.md"),
                 node("Funciones", "tuto/calls.md"),
                 node("Clases", "tuto/class.md"),
                 node("Modulos", "tuto/module.md"),
+                node("Importar librerias", "tuto/lib.md"),
+                node("Ciclos y blucles", "tuto/ciclo.md"),
+                
             ]
 
         ),
+        treenode(
+            "Modulos",
+            [
+                node("os", "tuto/values.md"),
+                node("fs", "tuto/values2.md"),
+                node("math", "tuto/vars.md"),
+                node("time", "tuto/calls.md"),
+                node("http", "tuto/class.md"),
+                node("socket", "tuto/module.md"),
+            ]
+        )
         
     ]
 };
