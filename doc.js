@@ -15,10 +15,13 @@ module.exports.meta= function () {
                 node("Tipo de dato I", "tuto/values.md"),
                 node("Tipo de dato II", "tuto/values2.md"),
                 node("Variables", "tuto/vars.md"),
+                node("Operaciones", "tuto/ope.md"),
                 node("Funciones", "tuto/calls.md"),
                 node("Clases", "tuto/class.md"),
                 node("Modulos", "tuto/module.md"),
                 node("Importar librerias", "tuto/lib.md"),
+                node("Condiciones (Setencia if)", "tuto/if.md"),
+                node("Operaciones condicionales", "tuto/equ.md"),
                 node("Ciclos y blucles", "tuto/ciclo.md"),
                 
             ]

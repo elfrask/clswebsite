@@ -25,7 +25,7 @@
 	base de la siguiente estructura.
 </p>
 <p class="gold">
-	function NombreDeLaFuncion( Argumentos, ..., ultimo ) <br> { codigo }
+	function <b>NombreDeLaFuncion</b>( <b>Argumentos, ..., ultimo</b> ) <br> { <b>codigo</b> }
 </p>
 <p>
 	Usamos el nombre reservado de cls "function", aunque hay otros como
@@ -39,7 +39,7 @@
 	estructura de la siguiente manera.
 </p>
 <p class="gold">
-	( Argumentos, ..., ultimo ) -> { codigo }
+	( <b>Argumentos, ..., ultimo</b> ) -> { <b>codigo</b> }
 </p>
 <p>
 	Ponemos primero los argumentos dentro de los parentesis "()" y le ponemos

@@ -19,7 +19,7 @@
 	una libreria con la siguiente estructura
 </p>
 <p class="gold">
-	import "libreria.scls" as NombreParaDarle;
+	import "<b>libreria</b>" as <b>NombreParaDarle</b>;
 </p>
 <p>
 	Podremos ver un ejemplo en el siguiente codigo pero
@@ -81,7 +81,7 @@ export.hola = "Hola mundo";
 	de la siguiente manera
 </p>
 <p class="gold">
-	from "libreria.scls" import fragmento as nombre;
+	from "<b>libreria</b>" import <b>fragmento</b> as <b>nombre</b>;
 </p>
 <p>
 	osea importamos la libreria le decimos el fragmento que
@@ -111,7 +111,7 @@ print(saludo)
 	mas simple
 </p>
 <p class="gold">
-	include "libreria.scls";
+	include "<b>libreria</b>";
 </p>
 <p>
 	veamos un ultimo ejemplo pero con include usando la misma
