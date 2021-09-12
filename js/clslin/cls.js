@@ -568,7 +568,7 @@ let Clslin = (() => {
             "function", "var", "class", "module", "namespace", "return",
             "if", "for", "with", "while", "else", "elif", "elseif", "import",
             "from", "include", "const", "public", "export", "static", "private",
-            "as", "and", "or", "in"
+            "as", "and", "or", "in", "each", "func", "method"
         ],
         var:[
             "me", "private", "_file", "_name", 
@@ -579,7 +579,7 @@ let Clslin = (() => {
         valdef:[
             "int", "Integer", "float", "Float", "bool", "Boolean", "str", "String",
             "iter", "Array", "Byte", "byte", "process", "ord", "bin", "Bin", "print", 
-            "hex", "Hex", "input", "oct", "Oct"
+            "hex", "Hex", "input", "oct", "Oct", "char", "Char"
         ]
     }
 
@@ -921,9 +921,20 @@ let Clslin = (() => {
     }
 
     let toConverti = (e) => {
+        //console.log(e)
+        let val = [
+            ["&gt;", ">"],
+            ["&lt;", "<"],
+        ]
+
+        let menoe = e;
+
+        val.forEach(x=>{
+            menoe = tools.replace(menoe, x[0], x[1])
+        })
         
         let mo = desline(
-            tools.replace(trim(e), "&gt;", ">")
+            menoe
         );
         let salida = "";
         console.log(e)
