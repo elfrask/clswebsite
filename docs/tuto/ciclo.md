@@ -336,5 +336,8 @@ for (num = 0; num < 10; num++) {
 </p>
 <p class="gold">
 	Algo a destacar que en el metodo Array.forEach no funciona solo en casos donde
-	el bloque de codigo donde se implemente le pertenesca a un ciclo o bucle
+	el bloque de codigo donde se implemente le pertenesca a un ciclo for o un bucle while,
+	en el metodo Array.forEach no funciona porque el bloque de codigo seria manejado por una
+	funcion anonima.
+
 </p>

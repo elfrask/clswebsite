@@ -927,7 +927,7 @@ let Clslin = (() => {
             ["&lt;", "<"],
         ]
 
-        let menoe = e;
+        let menoe = trim(e);
 
         val.forEach(x=>{
             menoe = tools.replace(menoe, x[0], x[1])
@@ -937,7 +937,7 @@ let Clslin = (() => {
             menoe
         );
         let salida = "";
-        console.log(e)
+        //console.log(e)
         for (let i = 0; i < mo.length; i++) {
             const ee = mo[i];
 
