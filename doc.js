@@ -31,12 +31,11 @@ module.exports.meta= function () {
         treenode(
             "Modulos",
             [
-                node("os", "tuto/values.md"),
-                node("fs", "tuto/values2.md"),
-                node("math", "tuto/vars.md"),
-                node("time", "tuto/calls.md"),
-                node("http", "tuto/class.md"),
-                node("socket", "tuto/module.md"),
+                node("os", "module/os.md"),
+                node("fs", "module/fs.md"),
+                node("math", "module/math.md"),
+                node("time", "module/time.md"),
+                node("network", "module/network.md"),
             ]
         )
         
