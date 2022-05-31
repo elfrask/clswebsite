@@ -136,7 +136,7 @@ class Dow extends React.Component {
             }}
             >
                 <Wid title="Esta disponible?" color="dodgerblue">
-                    Cls esta dsiponible en su version beta, hay dos implementaciones
+                    Cls esta disponible en su version beta, hay dos implementaciones
                     de CLS: CLS y CLSJS una dedicada al uso general y otra dedicada
                     solo para la web, puedes descargar CLS <a href="/downloads">aqui</a>
                 </Wid>
