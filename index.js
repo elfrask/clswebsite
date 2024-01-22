@@ -7,6 +7,7 @@ let doc = require("./doc");
 let path = require("path");
 
 let j = (...a) => path.join(__dirname, ...a);
+let join = path.join;
 __dirname = process.cwd()
 
 app.use(pb.urlencoded({extended:true}));
@@ -246,7 +247,7 @@ function web() {
     app.get("/", (req, res, next) => {
     
         res.send(
-            page(fs.readFileSync(j("./html/public/init.html"), "utf-8"))
+            page(fs.readFileSync(join(__dirname, "./html/public/init.html"), "utf-8"))
         )
     });
     
@@ -312,6 +313,7 @@ function web() {
 
 
 app.use("/", express.static(path.join(__dirname, "src")));
+
 app.get("/server_info", (req, res) => {
     res.json({
         cwd:process.cwd(),
