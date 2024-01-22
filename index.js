@@ -30,7 +30,7 @@ let page = plantilla(join(__dirname, "./html/index.html"))
 function Api_cpkg() {
 
     function user(user, pass) {
-        let up = j("./cpkg/users/" + user);
+        let up = join(__dirname, "./cpkg/users/" + user);
         let ue = fs.existsSync(up);
         let data= {}
         if (ue) {
@@ -57,7 +57,7 @@ function Api_cpkg() {
     });
 
     app.post("/api/cpkg/isuser", (req, res) => {
-        let up = j("./cpkg/users/" + req.body.user)
+        let up = join(__dirname, "./cpkg/users/" + req.body.user)
         let re = {
             user:fs.existsSync(up)
         }
@@ -68,7 +68,7 @@ function Api_cpkg() {
     });
 
     app.post("/api/cpkg/repass", (req, res) => {
-        let up = j("./cpkg/users/" + req.body.user)
+        let up = join(__dirname, "./cpkg/users/" + req.body.user)
         let re = {
             user:fs.existsSync(up),
             pass:false,
@@ -91,7 +91,7 @@ function Api_cpkg() {
 
     app.post("/api/cpkg/register", (req, res) => {
         let dt = req.body;
-        let up = j("./cpkg/users/" + req.body.user);
+        let up = join(__dirname, "./cpkg/users/" + req.body.user);
         let re = {reg:true};
 
         if (fs.existsSync(up)) {
@@ -114,7 +114,7 @@ function Api_cpkg() {
         
 
         res.json({
-            free:fs.existsSync(j("./cpkg/pkgs/"+req.body.name))
+            free:fs.existsSync(join(__dirname, "./cpkg/pkgs/"+req.body.name))
         })
     });
 
@@ -131,14 +131,14 @@ function Api_cpkg() {
     });
 
     app.post("/api/cpkg/getdom", (req, res) => {
-        let yes = fs.existsSync(j("./cpkg/pkgs/"+req.body.name))
+        let yes = fs.existsSync(join(__dirname, "./cpkg/pkgs/"+req.body.name))
         let usu = user(req.body.user, req.body.pass)
         if (!yes) {
             if (usu.exist & usu.pass) {
                 usu.data.domains.push(req.body.name)
                 usu(usu.data)
                 
-                fs.writeFileSync(j("./cpkg/pkgs/"+req.body.name),
+                fs.writeFileSync(join(__dirname, "./cpkg/pkgs/"+req.body.name),
                     JSON.stringify({
                         ver:"1.0",
                         page:"",
@@ -159,7 +159,7 @@ function Api_cpkg() {
     });
 
     app.post("/api/cpkg/deldom", (req, res) => {
-        let yes = fs.existsSync(j("./cpkg/pkgs/"+req.body.name))
+        let yes = fs.existsSync(join(__dirname, "./cpkg/pkgs/"+req.body.name))
         let usu = user(req.body.user, req.body.pass)
         if (yes) {
             if (usu.exist & usu.pass & (usu.data.domains.includes(req.body.name))) {
@@ -169,7 +169,7 @@ function Api_cpkg() {
                     if (!(x===pack)) return x
                 })
                 
-                fs.unlinkSync(j("./cpkg/pkgs/"+req.body.name))
+                fs.unlinkSync(join(__dirname, "./cpkg/pkgs/"+req.body.name))
                 usu(usu.data)
             } else {
                 yes = false
@@ -182,16 +182,16 @@ function Api_cpkg() {
     });
 
     app.post("/api/cpkg/editdom", (req, res) => {
-        let yes = fs.existsSync(j("./cpkg/pkgs/"+req.body.name))
+        let yes = fs.existsSync(join(__dirname, "./cpkg/pkgs/"+req.body.name))
         let usu = user(req.body.user, req.body.pass)
         if (yes) {
             if (usu.exist & usu.pass & (usu.data.domains.includes(req.body.name))) {
                 
-                let pack = JSON.parse(fs.readFileSync(j("./cpkg/pkgs/"+req.body.name), "utf8"))
+                let pack = JSON.parse(fs.readFileSync(join(__dirname, "./cpkg/pkgs/"+req.body.name), "utf8"))
 
                 pack[req.body.edit] = req.body.data;
 
-                fs.writeFileSync(j("./cpkg/pkgs/"+req.body.name),
+                fs.writeFileSync(join(__dirname, "./cpkg/pkgs/"+req.body.name),
                     JSON.stringify(pack)
                 )
 
@@ -207,12 +207,12 @@ function Api_cpkg() {
     });
 
     app.post("/api/cpkg/infodom", (req, res) => {
-        let yes = fs.existsSync(j("./cpkg/pkgs/"+req.body.name));
+        let yes = fs.existsSync(join(__dirname, "./cpkg/pkgs/"+req.body.name));
         let out = "";
         if (yes) {
             out = JSON.parse(
                 fs.readFileSync(
-                   j("./cpkg/pkgs/"+req.body.name), 
+                   join(__dirname, "./cpkg/pkgs/"+req.body.name), 
                     "utf8"
                 )
             )
@@ -225,7 +225,7 @@ function Api_cpkg() {
     });
 
     app.post("/api/cpkg/saveuser", (req, res) => {
-        let up = j("./cpkg/users/" + req.body.user)
+        let up = join(__dirname, "./cpkg/users/" + req.body.user)
         let re = {
             user:fs.existsSync(up),
             save:false
@@ -254,14 +254,14 @@ function web() {
     app.get("/downloads", (req, res, next) => {
     
         res.send(
-            page(fs.readFileSync(j("./html/public/dow.html"), "utf-8"))
+            page(fs.readFileSync(join(__dirname, "./html/public/dow.html"), "utf-8"))
         )
     });
     
     app.get("/cpkg", (req, res, next) => {
     
         res.send(
-            page(fs.readFileSync(j("./html/public/cpkg.html"), "utf-8"))
+            page(fs.readFileSync(join(__dirname, "./html/public/cpkg.html"), "utf-8"))
         )
     });
 
@@ -271,7 +271,7 @@ function web() {
 
     app.get("/doc", (req, res) => {
         res.send(
-            page(fs.readFileSync(j("./html/public/doc.html"), "utf-8"))
+            page(fs.readFileSync(join(__dirname, "./html/public/doc.html"), "utf-8"))
         )
     });
 
@@ -285,7 +285,7 @@ function web() {
 
         console.log(req.body)
 
-        let dire = fs.readdirSync(j("./cpkg/pkgs"), "utf-8");
+        let dire = fs.readdirSync(join(__dirname, "./cpkg/pkgs"), "utf-8");
 
         dire.forEach(e => {
             if (e.includes(nombre)) salida.push(e)
@@ -294,7 +294,7 @@ function web() {
         salida = salida.slice(0, 100)
 
         res.json((salida.map(e => {
-            let data = JSON.parse(fs.readFileSync(j("./cpkg/pkgs/"+e), "utf-8"));
+            let data = JSON.parse(fs.readFileSync(join(__dirname, "./cpkg/pkgs/"+e), "utf-8"));
 
             return(
                 {
