@@ -7,7 +7,7 @@ let doc = require("./doc");
 let path = require("path");
 
 let j = (...a) => path.join(__dirname, ...a);
-//__dirname = process.cwd()
+__dirname = process.cwd()
 
 app.use(pb.urlencoded({extended:true}));
 app.use(pb.json());
