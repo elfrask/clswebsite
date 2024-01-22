@@ -311,16 +311,15 @@ function web() {
 };
 
 
-let lista = (["js", "css", "img", "app", "sass", "font", "docs"]);
-function debug(a) {
-    console.log(a)
-    return a
-}
-lista.forEach((e) => {
-
-    app.use("/" +e, express.static(debug(path.join(process.cwd(), e))));
-
-});
+app.use("/", express.static(path.join(__dirname, "src")));
+app.get("/server_info", (req, res) => {
+    res.json({
+        cwd:process.cwd(),
+        dirname: __dirname,
+        serverless: true,
+        currentdirectory: fs.readdirSync(".", "utf-8")
+    })
+})
 
 let f = [web, Api_cpkg];
 
