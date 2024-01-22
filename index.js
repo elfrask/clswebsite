@@ -18,13 +18,13 @@ function plantilla(d = "") {
     return((o) => {
 
         return (
-            fs.readFileSync(join(__dirname, d), "utf-8")
+            fs.readFileSync(d, "utf-8")
                 .replace("${{body}}", o)
         )
     })
 }
 
-let page = plantilla(j("./html/index.html"))
+let page = plantilla(join(__dirname, "./html/index.html"))
 
 
 function Api_cpkg() {
