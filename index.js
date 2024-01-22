@@ -311,11 +311,11 @@ function web() {
 };
 
 
-let lista = (["/js", "/css", "/img", "/app", "/sass", "/font", "/docs"]);
+let lista = (["js", "css", "img", "app", "sass", "font", "docs"]);
 
 lista.forEach((e) => {
 
-    app.use(e, express.static(j("."+e)))
+    app.use("/" +e, express.static(j(e)));
 
 });
 
